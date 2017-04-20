@@ -13,7 +13,7 @@ class Shower::StreamController < ApplicationController
           response.stream.write("data: #{data}\n\n")
         end
       end
-    rescue IOError
+    rescue IOError, ClientDisconnected
       # stream closed
     ensure
       # stopping stream thread
